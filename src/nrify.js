@@ -1,7 +1,7 @@
 /**
 *
 * Name: nrify.js
-* Version: 0.1
+* Version: 0.1.1
 * Description: simple mimic of input[type=number]
 * Author: P. Envall (petter.envall@gmail.com, @npup)
 * Date: 2013-05-09
@@ -10,6 +10,9 @@
 * API:
 *   nrify(form);
 *     form     - (form element) form to scan for input[type=number] elements to activate
+*
+*   nrify.supportsNumber - boolean, says if input[type=number] is natively supported
+*
 */
 var nrify = (function () {
 
@@ -180,8 +183,8 @@ var nrify = (function () {
     tick.interval = 100;
   })();
 
-  return supportsNumber ? function () {
-    // using native input[type=number]
+  var nrify = supportsNumber ? function () {
+    // agent will be using native input[type=number]
   } : function (form) {
     var elements = form.elements, elem;
     for (var idx=0, len=elements.length; idx<len; ++idx) {
@@ -189,5 +192,7 @@ var nrify = (function () {
       elem.getAttribute("type")=="number" && activate(elem);
     }
   };
+  nrify.supportsNumber = supportsNumber;
+  return nrify;
 
 })();
