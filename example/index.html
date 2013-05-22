@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title></title>
+</head>
+
+<body>
+<h1>input[type=number]</h1>
+
+<form action="#" id="f0">
+	<input type="number" name="nr" step=".25" max="10" min="-5">
+	<input type="number" min="0" max="3" step="any">
+	<hr>
+	<input type="number" min="0" max="3" step="0">
+	<input type="number" min="0" max="3" step="-.5">
+	<hr>
+	<input type="number" min="10" max="3">
+</form>
+
+
+<script type="text/javascript" src="../build/nrify.js"></script>
+<script type="text/javascript">
+	nrify(document.forms[0]);
+</script>
+
+</body>
+</html>
