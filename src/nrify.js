@@ -169,15 +169,15 @@ var nrify = (function () {
         , "cmd": cmd
         , "input": input
       };
-      tick();
+      tick(750);
     });
-    function tick() {
+    function tick(customInterval) {
       if (state.mousedown) {
         processCmd(state.cmd, state.input);
-        setTimeout(tick, tick.interval);
+        setTimeout(tick, "number"==typeof customInterval ? customInterval : tick.interval);
       }
     }
-    tick.interval = 200;
+    tick.interval = 100;
   })();
 
   return supportsNumber ? function () {
