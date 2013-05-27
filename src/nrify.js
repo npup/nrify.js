@@ -73,7 +73,8 @@ var nrify = (function () {
       , step = getStep(input)
       , newVal = curVal + dir*step
       , diff = getNumber(input.value, 0) % step;
-    diff!=0 &&  (newVal += dir>0 ? -dir*diff : step-diff);
+    diff!==0 &&  (newVal += dir>0 ? -dir*diff : step-diff);
+
     var min = getNumber(input.getAttribute("min"), Number.MIN_VALUE)
       , max = getNumber(input.getAttribute("max"), Number.MAX_VALUE);
     newVal = Math.min(Math.max(min, newVal), max);
